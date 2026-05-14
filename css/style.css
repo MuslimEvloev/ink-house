@@ -218,10 +218,12 @@ svg * {
 :root {
   --color-dark: #2c2d35;
   --color-green: #598d66;
+  --color-green-alternate: #e1ede6;
   --color-grey: #86928b;
   --color-extra-light: #f4f6f5;
   --color-light: #e1ede6;
   --border-radius: 20px;
+  --border: 1px solid var(--color-green);
   --padding-block: 21px;
   --font-family: "Raleway", sans-serif;
   --container-width: 1110px;
@@ -245,7 +247,24 @@ a:hover {
   color: var(--color-grey);
 }
 
+.button {
+  display: inline-flex;
+  align-items: center;
+  border: var(--border);
+  padding-inline: 60px;
+  background: var(--color-extra-light);
+  color: var(--color-green);
+  font-size: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
+  overflow-x: hidden;
   background-color: var(--color-extra-light);
   font-family: var(--font-family);
   font-weight: 500;
@@ -265,8 +284,8 @@ body {
   justify-content: space-between;
   align-items: center;
   column-gap: 60px;
-  padding-block: 35px;
-  padding-inline: 100px;
+  padding-inline: 50px;
+  background-color: var(--color-green-alternate);
 }
 
 .header-logo {
@@ -289,22 +308,114 @@ body {
   color: var(--color-dark);
 }
 
+.hero {
+  margin-bottom: 70px;
+}
+
+.hero-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-inline: 50px;
+  column-gap: 30px;
+}
+
+.hero-card-bird {
+  max-width: 540px;
+  padding-block: 145px;
+}
+
+.hero-block-title {
+  font-size: clamp(30px, 4.16vw, 60px);
+  font-weight: 500;
+  color: var(--color-dark);
+  line-height: 110%;
+  margin-bottom: 20px;
+}
+
+.hero-block-title::after {
+  content: "Ink. House";
+  font-size: clamp(30px, 4.16vw, 60px);
+  font-weight: 500;
+  padding-left: 15px;
+  color: var(--color-green);
+}
+
+.hero-block-description {
+  margin-bottom: 60px;
+}
+.hero-block-button {
+  width: 225px;
+  height: 65px;
+}
+
 @media (max-width: 1024px) {
   .header {
     flex-wrap: wrap;
   }
-
   .header-menu-list {
-    flex-wrap: wrap;
-    column-gap: 70px;
+    column-gap: 60px;
+  }
+  .header-logo {
+    margin: auto;
+  }
+
+  .hero-card-bird {
+    max-width: 330px;
+    padding-block: 35px;
+  }
+
+  .hero-img {
+    width: 330px;
+    height: 380px;
+  }
+
+  .hero-items {
+    column-gap: 15px;
+  }
+
+  .hero-block-description {
+    margin-bottom: 40px;
   }
 }
 
 @media (max-width: 767px) {
-  .header-menu-list {
-    column-gap: 20px;
+  .header {
+    padding-inline: 39px;
   }
-  .header-menu-link {
-    height: 52px;
+
+  .hero {
+    margin-block: 50px;
+  }
+
+  .hero-img {
+    width: 195px;
+    height: 240px;
+  }
+  .hero-card-bird {
+    max-width: 285px;
+    padding-block: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .header {
+    padding-top: 18px;
+  }
+  .header-menu-list {
+    flex-wrap: wrap;
+  }
+  .header-menu-item {
+    margin-right: 100%;
+  }
+
+  .hero {
+    margin-block: 60px;
+  }
+  .hero-card-bird {
+    max-width: 290px;
+  }
+  .hero-img {
+    display: none;
   }
 }
