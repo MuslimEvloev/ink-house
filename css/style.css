@@ -288,6 +288,50 @@ body {
   background-color: var(--color-green-alternate);
 }
 
+.header-burger-button {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  margin-right: 275px;
+  margin-top: 85px;
+}
+
+.header-burger-button span {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  left: 5px;
+  background-color: var(--color-grey);
+  border: none;
+  border-radius: 50px;
+  transition:
+    transform 0.5s,
+    opacity 0.5s,
+    background-color 0.5s;
+}
+
+.header-burger-button span:nth-child(1) {
+  transform: translateY(10px);
+}
+
+.header-burger-button span:nth-child(3) {
+  transform: translateY(20px);
+}
+
+.header.open .header-burger-button span:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+
+.header.open .header-burger-button span:nth-child(2) {
+  opacity: 0;
+}
+
+.header.open .header-burger-button span:nth-child(3) {
+  transform: translateY(0) rotate(-45deg);
+}
+
 .header-logo {
   flex-shrink: 0;
 }
@@ -628,7 +672,9 @@ body {
   .hero-block-description {
     margin-bottom: 40px;
   }
-  .catalog-cards-list_french {
+  .catalog-cards-list_french,
+  .catalog-cards-list_germany,
+  .catalog-cards-list_england {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -697,7 +743,9 @@ body {
     width: 125px;
     height: 40px;
   }
-  .catalog-cards-list_french {
+  .catalog-cards-list_french,
+  .catalog-cards-list_germany,
+  .catalog-cards-list_england {
     grid-template-columns: repeat(1, 1fr);
   }
   .catalog-cards-img {
@@ -717,8 +765,27 @@ body {
   .header {
     padding-top: 18px;
   }
+  .header-burger-button {
+    display: block;
+    margin-block: 15px;
+  }
+
   .header-menu-list {
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .header.open .header-menu-list {
+    max-height: 300px;
+    opacity: 1;
   }
   .header-menu-item {
     margin-right: 100%;
